@@ -47,7 +47,7 @@ public:
     //     return min(taken,nt_taken);
     // }
 
-    int camera=0;
+    int camera=0;  //1->covered 0->i have camera -1->i need camera
     int solve(TreeNode* root){
         if(!root){
             return 1; //1-->covered
