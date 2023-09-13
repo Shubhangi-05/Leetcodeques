@@ -31,10 +31,23 @@ public:
 
 
     }
+
+    vector<int>solve1(TreeNode* root){
+        if(!root){
+            return {0,0};
+        }
+        vector<int>left=solve1(root->left);
+        vector<int>rght=solve1(root->right);
+        vector<int>res(2);
+        res[0]=max(left[0],left[1])+max(rght[0],rght[1]);
+        res[1]=root->val+left[0]+rght[0];
+        return res;
+    }
     int rob(TreeNode* root) {
         if(!root){
             return 0;
         }
-      return solve(root);
+      vector<int>res= solve1(root);
+      return max(res[0],res[1]); //max of either rob that node or not rob
     }
 };
